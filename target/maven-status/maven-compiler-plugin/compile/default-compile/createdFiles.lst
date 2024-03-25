@@ -1,0 +1,17 @@
+com\egg\noticias\entidades\Usuario.class
+com\egg\noticias\SeguridadWeb.class
+com\egg\noticias\entidades\Admin.class
+com\egg\noticias\servicios\NoticiaServicio.class
+com\egg\noticias\excepciones\CamposVaciosException.class
+com\egg\noticias\NoticiasApplication.class
+com\egg\noticias\Configuraciones.class
+com\egg\noticias\entidades\Noticia.class
+com\egg\noticias\repositorios\UsuarioRepositorio.class
+com\egg\noticias\controladores\AdminControlador.class
+com\egg\noticias\controladores\PortalControlador.class
+com\egg\noticias\servicios\UsuarioServicio.class
+com\egg\noticias\entidades\Periodista.class
+com\egg\noticias\repositorios\NoticiaRepositorio.class
+com\egg\noticias\excepciones\SinResultadosExcepcion.class
+com\egg\noticias\excepciones\EmailRegistradoException.class
+com\egg\noticias\enumeraciones\Rol.class

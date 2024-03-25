@@ -1,0 +1,22 @@
+<html lang="en" xmlns:th="http://www.tyhmeleaf.org" xmlns:sec="http://www.tyhmeleaf.org/extras/spring-security">
+<head th:replace="/fragments/head.html::head"></head>
+<body>
+  
+  <!-- Navbar -->
+  <navbar th:replace="/fragments/navbar.html::navbar"></navbar>
+
+  <!-- Main:Noticias -->
+  <main th:replace="/fragments/noticias.html::noticias"></main>
+  
+  <!-- Modal: Crear -->
+  <section th:replace="/fragments/crear.html::crear"></section>
+
+  <!-- Modal: Editar -->
+  <section th:replace="/fragments/editar.html::editar"></section>
+      
+  <th:block layout:fragment="script">
+    <script th:if="${editar}">document.querySelector("#editarBtn").click();</script>
+  </th:block>
+
+</body>
+</html>

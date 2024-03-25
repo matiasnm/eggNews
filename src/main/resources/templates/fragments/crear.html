@@ -1,0 +1,46 @@
+<html>
+  <!-- Modal: Crear -->
+  <section th:fragment="crear">
+  <div class="modal fade" id="modalCrear" data-bs-theme="dark" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalCrearLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content" style="background-color:#212529c0;">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" style="color:white;">Crear Noticia</h1>
+          <a href=".."><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+        </div>
+
+        <!-- Alerta -->
+        <div  th:if="${alerta != null}"  aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
+        <div class="toast fade show text-bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <strong class="me-auto">Error</strong>
+            <small></small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div th:text="${alerta}" class="toast-body"></div>
+        </div>
+        </div>
+
+        <form id="crearForm" class="col" action="/admin/crear" method="POST">
+        <div class="modal-body"> 
+            <div class="container">
+              <div class="row-auto mt-2">
+                <input type="text" class="form-control" id="tituloCrear" name="tituloCrear" placeholder="Título">
+              </div>
+              <div class="row-auto mt-2">
+                <textarea class="form-control" aria-label="cuerpo" id="cuerpoCrear" name="cuerpoCrear" placeholder="..." style="height: 50vh; resize: none;"></textarea>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <a href=".."><button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cerrar</button></a>
+          <button type="submit" class="btn btn-sm btn-warning">Crear</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+  <script th:if="${crear}">document.querySelector("#crearBtn").click();</script>
+  <th:block layout:fragment="script"></th:block>
+</section>
+</html>

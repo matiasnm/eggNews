@@ -1,0 +1,46 @@
+<!-- Main:Noticias -->
+<main th:fragment="noticias">
+    <div class="container" th:if="${noticias.size() >= 1}">
+        <div th:each="noticia:${noticias}" class="card my-5" style="background-color: #ffffff00;">
+            <div class="card-header d-inline-flex align-content-between align-items-center">
+              
+              <div class="container d-flex justify-content-start">
+                <h6 th:text="${noticia.titulo}"></h6>
+              </div>
+
+              <div class="container d-flex justify-content-end">
+                <!-- Edit Btn ADMIN -->
+                <form sec:authorize="hasRole('ADMIN')" id="editarForm" class="m-2" action="/admin/editar" method="GET">
+                  <input hidden type="text" class="form-control" id="idEditar" name="idEditar" th:value="${noticia.id}">
+                  <button type="submit" class="btn btn-light" title="Editar"><i class="bi bi-pencil-square"></i></button>
+                </form>
+                <!-- Unactive Btn ADMIN -->
+                <form sec:authorize="hasRole('ADMIN')" id="desactivarForm" class="m-2" action="/admin/desactivar" method="POST">
+                  <input hidden type="text" class="form-control" id="idDesactivar" name="idDesactivar" th:value="${noticia.id}">
+                  <button type="submit" class="btn btn-light" title="Desactivar"><i class="bi bi-x-circle-fill"></i></button>
+                </form>
+                <!-- Delete Btn ADMIN -->
+                <form sec:authorize="hasRole('ADMIN')" id="borrarForm" class="m-2" action="/admin/borrar" method="DELETE">
+                  <input hidden type="text" class="form-control" id="idBorrar" name="idBorrar" th:value="${noticia.id}">
+                  <button type="submit" class="btn btn-warning" title="Borrar"><i class="bi bi-trash"></i></button>
+                </form>
+                <!-- Edit Btn PERIODISTA -->
+                <form sec:authorize="hasRole('PERIODISTA')" th:if="${session.usuario.id == noticia.creador.id}" id="editarForm" class="m-2" action="/admin/editar" method="GET">
+                  <input hidden type="text" class="form-control" id="idEditar" name="idEditar" th:value="${noticia.id}">
+                  <button type="submit" class="btn" title="Editar"><i class="bi bi-pencil-square"></i></button>
+                </form>
+              </div>
+              
+            </div>
+            <div class="card-body" style="text-align: justify;">
+              <!--<h5 class="card-title">Special title treatment</h5>-->
+              <p th:text="${noticia.cuerpo}" class="card-text"></p>
+            </div>
+        </div>
+    </div>
+    <div th:unless="${noticias.size() >= 1}" class="alert alert-warning text-center" role="alert">
+      No hay Noticias para mostrar.
+    </div>
+</main>
+</body>
+</html>

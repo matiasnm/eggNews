@@ -1,0 +1,42 @@
+<html lang="en" xmlns:th="http://www.tyhmeleaf.org" xmlns:sec="http://www.tyhmeleaf.org/extras/spring-security">
+<head th:replace="/fragments/head.html::head"></head>
+
+<body>
+  <navbar th:replace="/fragments/navbar.html::navbar"></navbar>
+
+  <!-- Main:Login -->
+  <main layout:fragment="content"> 
+
+    <!-- Error -->
+    <div th:if="${error != null}" class="text-center">
+      <div th:text="${error}" class="alert alert-danger text-center rounded-0 border-0" role="alert">
+      </div>
+    </div>
+
+        
+    <!-- Msg -->
+    <div th:if="${msg != null}" class="text-center">
+      <div th:text="${msg}" class="alert alert-success text-center rounded-0 border-0" role="alert">
+      </div>
+    </div>
+
+    <div class="container d-flex justify-content-center"> 
+      <form class="row-4 text-center my-3" th:action="@{/logincheck}" method="POST">
+        <div class="my-3">
+          <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" name="email" id="email" required>
+        </div>
+        <div class="my-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" name="password" id="password" required>
+        </div>
+        <div class="my-3">
+          <button class="btn btn-warning" type="submit">Login</button>
+          <br><br><a href="/registrar">Registrarse</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+</body>
+</html>

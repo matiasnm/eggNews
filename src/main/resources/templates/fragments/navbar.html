@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<!-- Navbar -->
+<nav th:fragment="navbar" class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark" style="border-top: gold; border-top-width: 1px; border-style: solid;">
+  <div class="container-fluid">
+    <a class="navbar-brand">egg.Noticias</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse mx-2" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item px-2">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+
+        <li sec:authorize="!isAuthenticated()" class="nav-item px-2">
+          <a class="nav-link" aria-current="page" href="/login">Login</a>
+        </li>
+
+        <li sec:authorize="isAuthenticated()" class="nav-item px-2">
+          <a th:text="'Hola, ' + ${session.usuario.email}" class="nav-link" aria-current="page" style="color:gold;"></a>
+        </li>
+
+        <li sec:authorize="hasAnyRole('ADMIN', 'PERIODISTA')" class="nav-item px-2">
+          <button id="crearBtn" class="nav-link btn-secondary btn btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#modalCrear">Crear</button>
+        </li>
+
+        <li sec:authorize="hasAnyRole('ADMIN', 'PERIODISTA')" class="nav-item px-2">
+          <a class="nav-link" aria-current="page" href="/admin/misnoticias">Mis Noticias</a>
+        </li>
+        <li sec:authorize="hasAnyRole('ADMIN')" class="nav-item px-2">
+          <a class="nav-link" aria-current="page" href="/admin/inactivas">Inactivas</a>
+        </li>
+        <li sec:authorize="hasAnyRole('ADMIN')" class="nav-item px-2">
+          <a class="nav-link" aria-current="page" href="/admin/periodistas">Periodistas</a>
+        </li>
+
+        <li sec:authorize="isAuthenticated()" class="nav-item px-2">
+          <a class="nav-link" aria-current="page" href="/logout">Logout</a>
+        </li>
+      </ul>
+      <!-- Buscar -->
+      <form id="buscarForm" class="navbar-nav mb-2 mb-lg-0" role="search" action="/buscar" method="POST">
+        <input class="form-control me-2" type="search" name="tituloBuscar" placeholder="Buscar" aria-label="Buscar">
+        <button class="btn btn-sm btn-outline-secondary" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
+</nav>
+</html>
