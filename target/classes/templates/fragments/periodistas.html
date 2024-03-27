@@ -15,22 +15,25 @@
             <tbody>
               <tr th:each="periodista:${periodistas}">
                 <th scope="row"></th>
-                <td th:text="${periodista.email}"></td>
+                <td>
+                  <div th:text="${periodista.email}" class="col-auto">
+                  </div>
+                </td>
 
                 <td>
                   <div th:if="${periodista.activo == false}" class="col-auto">
-                    <form action="periodistas/activar" method="POST">
+                    <form class="d-flex align-items-center" action="periodistas/activar" method="POST">
                       <input hidden name="id" th:value="${periodista.id}">
-                      <button sec:authorize="hasAnyRole('ADMIN')" title="Alta" class="btn btn-success mx-2 px-2" type="submit">
+                      <button sec:authorize="hasAnyRole('ADMIN')" title="Alta" class="btn btn-success px-2" type="submit">
                         <i class="bi bi-person-add"></i>
                       </button>
                     </form>
                   </div>
       
                   <div th:unless="${periodista.activo == false}" class="col-auto">
-                    <form action="periodistas/desactivar" method="POST">
+                    <form class="d-flex align-items-center" action="periodistas/desactivar" method="POST">
                       <input hidden name="id" th:value="${periodista.id}">
-                      <button sec:authorize="hasAnyRole('ADMIN')" title="Baja" class="btn btn-danger mx-2 px-2" type="submit">
+                      <button sec:authorize="hasAnyRole('ADMIN')" title="Baja" class="btn btn-danger px-2" type="submit">
                         <i class="bi bi-person-dash"></i>
                       </button>
                     </form>
@@ -38,14 +41,14 @@
                 </td>
 
                 <td> 
-                  <div class="d-flex align-items-baseline">
-                  <form class="" action="periodistas/sueldo" method="POST">
+                  <div class="col-auto">
+                  <form class="d-flex align-items-center" action="periodistas/sueldo" method="POST">
                     <input hidden name="id" th:value="${periodista.id}">
-                    <input type="number" class="form-control w-50" name="sueldo" step="0.01" min="0.0" th:value="${periodista.sueldo}">      
+                    <input type="number" class="form-control w-25" name="sueldo" step="0.1" min="0.0" th:value="${periodista.sueldo}">      
+                    <button sec:authorize="hasAnyRole('ADMIN')" title="Editar Sueldo" class="btn btn-danger mx-2 px-2" type="submit">
+                      <i class="bi bi-pencil-square"></i>
+                    </button>
                   </form>
-                  <button sec:authorize="hasAnyRole('ADMIN')" title="Editar Sueldo" class="btn btn-light" type="submit">
-                    <i class="bi bi-pencil-square"></i>
-                  </button> 
                   </div>
                 </td>
 

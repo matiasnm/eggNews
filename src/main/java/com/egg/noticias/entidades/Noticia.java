@@ -8,11 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
 
 @Entity
+@Table(name = "noticia")
 public class Noticia implements Serializable {
     
     @Id
@@ -22,7 +24,7 @@ public class Noticia implements Serializable {
     
     private String titulo;
     
-    @Column(columnDefinition = "MEDIUMTEXT")
+    @Column(columnDefinition = "text")
     private String cuerpo;
 
     @ManyToOne()

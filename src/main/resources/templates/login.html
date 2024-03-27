@@ -20,8 +20,9 @@
       </div>
     </div>
 
-    <div class="container d-flex justify-content-center"> 
-      <form class="row-4 text-center my-3" th:action="@{/logincheck}" method="POST">
+    <div class="container d-flex justify-content-center align-items-center flex-column">
+
+      <form class="row-4 my-3 text-center" th:action="@{/logincheck}" method="POST">
         <div class="my-3">
           <label for="email" class="form-label">Email</label>
             <input type="text" class="form-control" name="email" id="email" required>
@@ -35,7 +36,18 @@
           <br><br><a href="/registrar">Registrarse</a>
         </div>
       </form>
+
+      <div class="alert alert-success rounded-0 border-0" role="alert">
+        <h5>You may login as:</h5>
+        <ul class="git text-left">
+          <li>guest: 12345</li>
+          <li>periodista: 12345</li>
+          <li>admin: 12345</li>
+        </ul>
+      </div>
+
     </div>
+
   </main>
 
 </body>
