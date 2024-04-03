@@ -1,1 +1,2 @@
-src/resources/* -linguist-documentation
+.html linguist-detectable=false
+/src/resources/* -linguist-documentation
